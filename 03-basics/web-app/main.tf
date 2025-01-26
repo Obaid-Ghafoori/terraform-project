@@ -2,10 +2,10 @@ terraform {
   # Assumes s3 bucket and dynamo DB table already set up
   # See /code/03-basics/aws-backend
   backend "s3" {
-    bucket         = "og-devops-tf-state"
+    bucket         = "og-devops-tf-state-2025"
     key            = "03-basics/web-app/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "terraform-state-locking"
+    dynamodb_table = "terraform-state-locking-2025"
     encrypt        = true
   }
 
@@ -187,7 +187,7 @@ resource "aws_lb" "load_balancer" {
 }
 
 resource "aws_route53_zone" "primary" {
-  name = "devopsdeployed.com"
+  name = "digitalconnectify.com"
 }
 
 resource "aws_route53_record" "root" {
@@ -203,18 +203,13 @@ resource "aws_route53_record" "root" {
 }
 
 resource "aws_db_instance" "db_instance" {
-  allocated_storage = 20
-  # This allows any minor version within the major engine_version
-  # defined below, but will also result in allowing AWS to auto
-  # upgrade the minor version of your DB. This may be too risky
-  # in a real production environment.
-  auto_minor_version_upgrade = true
-  storage_type               = "standard"
-  engine                     = "postgres"
-  engine_version             = "12"
-  instance_class             = "db.t2.micro"
-  name                       = "mydb"
-  username                   = "foo"
-  password                   = "foobarbaz"
-  skip_final_snapshot        = true
+  allocated_storage    = 20
+  engine               = "postgres"
+  engine_version       = "12.19"
+  instance_class       = "db.t3.micro"
+  name                 = "mydb"
+  username             = "foo"
+  password             = "bazboozeez"
+  parameter_group_name = "default.postgres12"
+  skip_final_snapshot  = true
 }
