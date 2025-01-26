@@ -1,5 +1,9 @@
 terraform {
-  # Uncomment this code to switch from local backend to remote AWS backend by rerunning `terraform init` after initail `terraform apply`.
+  #############################################################
+  ## AFTER RUNNING TERRAFORM APPLY (WITH LOCAL BACKEND)
+  ## YOU WILL UNCOMMENT THIS CODE THEN RERUN TERRAFORM INIT
+  ## TO SWITCH FROM LOCAL BACKEND TO REMOTE AWS BACKEND
+  #############################################################
   backend "s3" {
     bucket         = "og-devops-tf-state-2025"
     key            = "03-basics/import-bootstrap/terraform.tfstate"
