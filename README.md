@@ -14,6 +14,7 @@ terraform-project
 └── .gitignore       # Files and directories to be ignored by Git
 ```
 
+
 ## Getting Started
 
 To get started with this Terraform project, follow these steps:
